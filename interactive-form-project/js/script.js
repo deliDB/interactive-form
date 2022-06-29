@@ -62,11 +62,6 @@ const activitiesCost = document.getElementById('activities-cost');
 
 let totalCost = 0;
 
-//grabs checkboxes and returns a node list
-const activitiesCheckboxes = document.querySelectorAll('#activities input');
-
-
-
 activitiesFieldset.addEventListener('change', e => {
     //stores input element that has been checked
     const clicked = e.target;
@@ -113,6 +108,8 @@ const emailField = document.getElementById('email');
 const ccNumField = document.getElementById('cc-num');
 const zipCodeField = document.getElementById('zip');
 const cvvField = document.getElementById('cvv');
+//Variable for checkboxes, returns a node list
+const activitiesCheckboxes = document.querySelectorAll('#activities input');
 
 const nameValidator = () => {
     const nameValue = nameField.value;
@@ -208,27 +205,19 @@ formElement.addEventListener('submit', e => {
 
 /*********** Accessibility ****************/
 
-const hints = document.querySelectorAll('span.hint');
-
-function validationPass(element){
+function validationPass(element) {
     let parameterParent = element.parentElement;
-    parameterParent.classList.add('valid');
-    parameterParent.classList.remove('not-valid');
-    parameterParent.lastElementChild.hidden = true;
-    for (const hint of hints){
-        hint.style.display = 'none';
-      }  
-  }
+	parameterParent.classList.add('valid');
+	parameterParent.classList.remove('not-valid');
+	element.nextElementSibling.style.display = 'none';
+}
 
-  function validationFail(element){
+function validationFail(element) {
     let parameterParent = element.parentElement;
-    parameterParent.classList.add('not-valid');
-    parameterParent.classList.remove('valid');
-    parameterParent.lastElementChild.hidden = false;
-    for (const hint of hints){
-        hint.style.display = 'block';
-      }  
-  }
+	parameterParent.classList.add('not-valid');
+	parameterParent.classList.remove('valid');
+	element.nextElementSibling.style.display = 'block';
+}
 
   //Add focus for each activity
 
