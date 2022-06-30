@@ -22,12 +22,15 @@ selectJobRole.addEventListener('change', e => {
 const colorSelectElement = document.getElementById('color'); //select element for shirt colors
 const colorOptionElements = document.querySelectorAll('#color option'); //option children of select element
 
-colorSelectElement.style.display = 'none'; //color options hidden by default
+//colorSelectElement.style.display = 'none'; //color options hidden by default
+
+colorSelectElement.disabled = 'true'; 
 
 const designField = document.getElementById('design'); //select element for shirt designs
 
 designField.addEventListener('change', e => {
-    colorSelectElement.style.display = '';
+   // colorSelectElement.style.display = '';
+   colorSelectElement.disabled = ''; 
     const punOptions = document.querySelectorAll('option[data-theme="js puns"]');
     const heartOptions = document.querySelectorAll('option[data-theme="heart js"]');
     if (e.target.value === 'js puns'){
